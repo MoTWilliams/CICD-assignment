@@ -35,7 +35,14 @@ jobs:
           pylint --disable=C0114,C0116 $(git ls-files '*.py')
 
       # Step 4: Run Python tests
-      ####
+      - name: Run Python tests
+        run: |
+          if [ -f pytest.ini ] || ls tests; then
+            pytest
+          else
+            echo "No tests found, skipping tests."
+          fi
+
 
   deploy:
     name: Deploy & Push to Docker Hub

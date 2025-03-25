@@ -1,11 +1,5 @@
 from app import app
 
-# Small change to trigger CI/CD pipeline
-
-# Attempt to trigger pylint
-def bad_code():
-    pass
-
 def test_get_message():
     with app.test_client() as client:
         response = client.get('/api/message')
