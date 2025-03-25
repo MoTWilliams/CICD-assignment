@@ -4,7 +4,7 @@ from app import app
 
 # Attempt to trigger pylint
 def bad_code():
-    
+    pass
 
 def test_get_message():
     with app.test_client() as client:
