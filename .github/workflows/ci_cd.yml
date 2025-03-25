@@ -26,9 +26,12 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          # Added pylint to requirements.txt
 
       # Step 3: Lint Python code
-      #### 
+      - name: Lint Python Code
+        run: |
+          pylint $(git ls-files '*.py')
 
       # Step 4: Run Python tests
       ####
