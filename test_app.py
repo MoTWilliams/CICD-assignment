@@ -1,6 +1,6 @@
 from app import app
 
-# A small change
+# Small change
 
 def test_get_message():
     with app.test_client() as client:
