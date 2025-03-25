@@ -1,5 +1,7 @@
 from app import app
 
+# A small change
+
 def test_get_message():
     with app.test_client() as client:
         response = client.get('/api/message')
