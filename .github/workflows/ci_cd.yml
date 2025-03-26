@@ -31,14 +31,19 @@ jobs:
       # Step 3: Lint Python code
       - name: Lint Python Code
         run: |
-          # Run Pylint on all python files in the repository. Ignore missing docstring errors          
+          # Run Pylint on all python files in the repository. Ignore missing docstring errors
           pylint --disable=C0114,C0116 $(git ls-files '*.py')
+
 
       # Step 4: Run Python tests
       - name: Run Python tests
         run: |
           # Run Python unit tests
-          pytest
+          if [ -f test_*.py ] || [ -f *_test.py ]; then
+            pytest
+          else
+            echo "No tests found, skipping tests."
+          fi
 
 
   deploy:
