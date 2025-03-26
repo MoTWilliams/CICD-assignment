@@ -62,7 +62,11 @@ jobs:
     # Add the following secrets to your GitHub repository - Environment (name = TEST)
     # add the Environment name to the deploy job above (important step)
     # https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions
-    ####    
+        - name: Build Docker Image
+          run: |
+            docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/backend_flask:latest .
+            (backend_flask)
+
 
     # Step 8: # Log in to Docker Hub
         - name: Log in to Docker Hub
@@ -70,8 +74,7 @@ jobs:
             ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
 
 
-    # Step 8: Push docker image to dockerhub
-    ####
+    # Step 9: Push docker image to dockerhub
         - name: Push Docker Image
           run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/backend_flask:latest
 
